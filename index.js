@@ -122,12 +122,12 @@ function getStorage() {
 }
 
 async function getData() {
-    const response = await fetch('https://api.thecatapi.com/v1/images/search?format=json&limit=6');
+    const response = await fetch('https://api.thecatapi.com/v1/images/search?format=json&limit=4');
     const data = await response.json();
     
     let count = 0;
     cards.forEach(card => {
-        count > 5 ? count = 0 : count;
+        count > 3 ? count = 0 : count;
         const attr = card.setAttribute('data-text', data[count].id);
 
         const cardFront = card.querySelector('.front');
@@ -150,8 +150,10 @@ async function init() {
 }
 
 resetBtn.addEventListener('click', function() {
-    localStorage.clear();
-    location.reload();
+    setTimeout(() => {
+        localStorage.clear();
+        location.reload();
+    }, 50)
 })
 
 window.load = init();
