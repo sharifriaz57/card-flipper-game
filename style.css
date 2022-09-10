@@ -1,0 +1,156 @@
+body {
+    background: #edefd9;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    width: 100%;
+    padding: 1.2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.score {
+    display: flex;
+}
+
+.card {
+    width: 120px;
+    height: 150px;
+    margin: 5px;
+    background-color: #f7f7f7;
+    background-image: url('images/naughty-cat.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100px;
+    border-radius: 6px;
+    box-shadow: 0 2px 3px 1px rgb(0 0 0 / 0.31);
+    -webkit-box-shadow: 0 1.5px 2px 1px rgb(0 0 0 / 31%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.btn-reset {
+    padding: 1rem;
+    border: none;
+    box-shadow: 1px 3px 3px 1px rgba(0,0,0,0.7);
+    background-color: lightblue;
+}
+
+.btn-restart:active {
+    box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.4);
+}
+
+.reaction {
+    width: 85px;
+    height: 85px;
+}
+
+.flip {
+    transition: 0.5s ease;
+    background-color: #f7fad4;
+    transform: rotateY(180deg);
+}
+
+img.front {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.card .front {
+    display: none;
+    transform: rotateY(180deg);
+}
+
+.card .back {
+    display: block;
+}
+
+.flip .front {
+    display: block;
+}
+
+.flip .back {
+    display: none;
+}
+
+.front,
+.back {
+    transition: 0.5s ease;
+}
+
+h2 {
+    margin: 0;
+}
+
+.counter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1.5rem;
+}
+
+@media(max-width: 500px) {
+    html {
+        font-size: 14px;
+    }
+    .card {
+        width: 95px;
+        height: 120px;
+    }
+}
+
+
+@keyframes animateIn {
+    0% {
+        transform: translate(-50%, calc(1.5rem));
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, 1rem);
+        opacity: 1;
+    }
+}
+
+.match-result {
+    animation: animateIn 0.7s ease 2 alternate;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 1rem);
+    background-color: #d7ece6;
+    border-radius: 50% 50% 6px 6px;
+    padding: 2rem 1rem;
+    box-shadow: 2px 4px 2.5rem 2px rgba(0, 0, 0, 0.55);
+    display: none;
+}
+.match-result-img {
+    width: 6rem;
+    height: 6rem;
+    margin: 0 auto;
+}
+.match-result img {
+    width: 100%;
+}
+.result-text {
+    font-size: 1.85rem;
+    text-align: center;
+}
