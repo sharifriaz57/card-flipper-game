@@ -18,10 +18,12 @@ cards.forEach((card) => card.addEventListener('click', flip));
 function result() {
     return new Promise((resolve, reject) => {
         if(firstCard.dataset.text == secondCard.dataset.text) {
+            resultCard('win');
             setTimeout(() => {
                 resolve('cards matched!');
             }, 1500);
         } else {
+            resultCard('lose');
             setTimeout(() => {
                 reject('cards did not match!');
             }, 1500);
@@ -47,22 +49,17 @@ async function check() {
         const output = await result();
         resultCount.winCount++;
         setStorage();
-        setStorage();
         const storageData = getStorage();
         win.innerHTML = storageData.winCount;
         checkResult();
-        resultCard('win')
         reset();
         init();
-        shuffle();
     } catch(error) {
-        console.log(error);
         resultCount.failCount++;
         setStorage();
         const storageData = getStorage();
         fail.innerHTML = storageData.failCount;
         checkResult();
-        resultCard('lose')
         reset();
     }
 }
@@ -80,7 +77,7 @@ function flip() {
     }
 }
 
-function checkResult(result) {
+function checkResult() {
     const storageData = getStorage();
     if (storageData != null) {
         const winDiff = storageData.winCount - storageData.failCount;
@@ -100,15 +97,13 @@ function checkResult(result) {
 function resultCard(result) {
     if (result == 'win') {
         matchResult.querySelector('img').setAttribute('src', 'images/happy-cat.png');
-        resultText.textContent = 'Yay! did it';
     } else {
         matchResult.querySelector('img').setAttribute('src', 'images/sad-cat.png');
-        resultText.textContent = 'Oww! try again';
     }
     matchResult.style.display = 'block';
     setTimeout(() => {
         matchResult.style.display = 'none';
-    }, 1200);
+    }, 1000);
 }
 
 function setStorage() { 

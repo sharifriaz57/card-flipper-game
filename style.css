@@ -152,14 +152,14 @@ h2 {
 }
 
 .match-result {
-    animation: animateIn 0.7s ease 2 alternate;
+    animation: animateIn 0.6s ease 2 alternate;
     position: fixed;
     top: 0;
     left: 50%;
     transform: translate(-50%, 1rem);
     background-image: linear-gradient(to right bottom, #eaebb0 15%, #e7c5dc 115%);
-    border-radius: 50% 50% 6px 6px;
-    padding: 2rem 1rem;
+    border-radius: 50%;
+    padding: 1.5rem;
     box-shadow: 2px 4px 2.5rem 2px rgba(0, 0, 0, 0.45);
     display: none;
 }
